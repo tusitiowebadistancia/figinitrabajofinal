@@ -85,6 +85,13 @@ router.post("/:cid/products/:pid", async (req, res) => {
 
     await cart.save();
 
+    const wantsHtml =
+      req.headers.accept && req.headers.accept.includes("text/html");
+
+    if (wantsHtml) {
+      return res.redirect("/products");
+    }
+
     res.json({
       status: "success",
       payload: cart

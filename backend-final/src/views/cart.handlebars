@@ -1,18 +1,48 @@
 <h1>Carrito</h1>
 
+<p>
+  <a href="/products">Volver a productos</a>
+</p>
+
+<form action="/carts/{{cart._id}}/clear" method="POST" style="margin-bottom: 20px;">
+  <button type="submit">Vaciar carrito</button>
+</form>
+
 {{#if cart.products.length}}
   {{#each cart.products}}
-    <div style="border: 1px solid #ccc; padding: 12px; margin-bottom: 12px; border-radius: 8px;">
+    <div style="border: 1px solid #ccc; padding: 12px; margin-bottom: 16px; border-radius: 8px;">
       <h2>{{this.product.title}}</h2>
       <p><strong>Descripción:</strong> {{this.product.description}}</p>
       <p><strong>Precio:</strong> ${{this.product.price}}</p>
       <p><strong>Categoría:</strong> {{this.product.category}}</p>
-      <p><strong>Cantidad:</strong> {{this.quantity}}</p>
+      <p><strong>Cantidad actual:</strong> {{this.quantity}}</p>
+
+      <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:10px;">
+        <form action="/carts/{{../cart._id}}/products/{{this.product._id}}/add" method="POST">
+          <button type="submit">+</button>
+        </form>
+
+        <form action="/carts/{{../cart._id}}/products/{{this.product._id}}/subtract" method="POST">
+          <button type="submit">-</button>
+        </form>
+
+        <form action="/carts/{{../cart._id}}/products/{{this.product._id}}/update" method="POST" style="display:flex; gap:8px; align-items:center;">
+          <input
+            type="number"
+            name="quantity"
+            min="1"
+            value="{{this.quantity}}"
+            style="width:70px;"
+          >
+          <button type="submit">Actualizar cantidad</button>
+        </form>
+
+        <form action="/carts/{{../cart._id}}/products/{{this.product._id}}/delete" method="POST">
+          <button type="submit">Eliminar producto</button>
+        </form>
+      </div>
     </div>
   {{/each}}
 {{else}}
   <p>El carrito está vacío.</p>
 {{/if}}
-
-<br>
-<a href="/products">Volver a productos</a>

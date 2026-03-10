@@ -8,6 +8,14 @@
   <p><strong>Stock:</strong> {{product.stock}}</p>
   <p><strong>Código:</strong> {{product.code}}</p>
   <p><strong>Disponible:</strong> {{product.status}}</p>
+
+  <div style="display:flex; gap:10px; margin-top:15px;">
+    <form action="/api/carts/69b06cf81016715f2184071b/products/{{product._id}}" method="POST">
+      <button type="submit">Agregar al carrito</button>
+    </form>
+
+    <a href="/carts/69b06cf81016715f2184071b">Ver carrito</a>
+  </div>
 </div>
 
 <br>

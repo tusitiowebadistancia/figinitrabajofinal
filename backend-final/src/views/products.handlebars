@@ -1,5 +1,9 @@
 <h1>Lista de productos</h1>
 
+<p style="margin-bottom: 20px;">
+  <a href="/carts/69b06cf81016715f2184071b">Ver carrito</a>
+</p>
+
 {{#if products.length}}
   {{#each products}}
     <div style="border: 1px solid #ccc; padding: 12px; margin-bottom: 12px; border-radius: 8px;">
@@ -8,7 +12,14 @@
       <p><strong>Precio:</strong> ${{this.price}}</p>
       <p><strong>Categoría:</strong> {{this.category}}</p>
       <p><strong>Stock:</strong> {{this.stock}}</p>
-      <a href="/products/{{this._id}}">Ver detalle</a>
+
+      <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+        <a href="/products/{{this._id}}">Ver detalle</a>
+
+        <form action="/api/carts/69b06cf81016715f2184071b/products/{{this._id}}" method="POST" style="margin:0;">
+          <button type="submit">Agregar al carrito</button>
+        </form>
+      </div>
     </div>
   {{/each}}
 {{else}}
