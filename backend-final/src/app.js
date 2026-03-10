@@ -27,7 +27,7 @@ app.use("/", viewsRouter);
 
 // Ruta de prueba
 app.get("/", (req, res) => {
-  res.send("Servidor funcionando");
+  res.redirect("/products");
 });
 
 // Conectar DB y levantar servidor
