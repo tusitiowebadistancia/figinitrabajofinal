@@ -25,7 +25,12 @@ app.use("/api/products", productsRouter);
 app.use("/api/carts", cartsRouter);
 app.use("/", viewsRouter);
 
-// Conexión DB y servidor
+// Ruta de prueba
+app.get("/", (req, res) => {
+  res.send("Servidor funcionando");
+});
+
+// Conectar DB y levantar servidor
 connectDB().then(() => {
   app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);

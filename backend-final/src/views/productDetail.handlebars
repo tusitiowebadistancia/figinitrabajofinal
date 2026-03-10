@@ -1,9 +1,15 @@
-<h1>{{product.title}}</h1>
-<p>{{product.description}}</p>
-<p>Precio: ${{product.price}}</p>
-<p>Stock: {{product.stock}}</p>
-<p>Categoría: {{product.category}}</p>
-<p>Estado: {{product.status}}</p>
-<p>Código: {{product.code}}</p>
+<h1>Detalle del producto</h1>
 
-<a href="/products">Volver</a>
+<div style="border: 1px solid #ccc; padding: 16px; border-radius: 8px;">
+  <h2>{{product.title}}</h2>
+  <p><strong>Descripción:</strong> {{product.description}}</p>
+  <p><strong>Precio:</strong> ${{product.price}}</p>
+  <p><strong>Categoría:</strong> {{product.category}}</p>
+  <p><strong>Stock:</strong> {{product.stock}}</p>
+  <p><strong>Código:</strong> {{product.code}}</p>
+  <p><strong>Disponible:</strong> {{product.status}}</p>
+</div>
+
+<br>
+
+<a href="/products">Volver a productos</a>
